@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.yahoo.elide:elide-datastore-hibernate:1.0.0.19">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yahoo.elide/elide-datastore-hibernate/1.0.0.19/31c21174e4139478915672304f5be748cfe888f5/elide-datastore-hibernate-1.0.0.19.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.yahoo.elide/elide-datastore-hibernate/1.0.0.19/e19bcb7381a982c79b6dd286dd9f19716ffd6303/elide-datastore-hibernate-1.0.0.19-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
