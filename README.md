@@ -1,6 +1,3 @@
-## Build
-https://travis-ci.org/wenzaca/Tokyo.Olympic.Games.svg?branch=master
-
 # Hands on - Tokyo 2020 Olympic Games
 ## Overview
 The 'Tokyo.Olympic.Games' is a 'Spring-Boot / Spring-Cloud / Spring-Netflix' - Middle Tier Service.
@@ -16,6 +13,9 @@ The 'Tokyo.Olympic.Games' is a 'Spring-Boot / Spring-Cloud / Spring-Netflix' - M
 	* JUnit
 	* MockMVC
 	* AssertJ
+
+## Build - Travis CI
+[![Build Status](https://travis-ci.org/wenzaca/Tokyo.Olympic.Games.svg?branch=master)](https://travis-ci.org/wenzaca/Tokyo.Olympic.Games)
 
 ## How to run
 ### Spring Boot Plugin
