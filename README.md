@@ -1,6 +1,8 @@
-#Hands on - Tokyo 2020 Olympic Games
+## Build
+https://travis-ci.org/wenzaca/Tokyo.Olympic.Games.svg?branch=master
 
-##Overview
+# Hands on - Tokyo 2020 Olympic Games
+## Overview
 The 'Tokyo.Olympic.Games' is a 'Spring-Boot / Spring-Cloud / Spring-Netflix' - Middle Tier Service.
 
 * Spring MVC-REST
