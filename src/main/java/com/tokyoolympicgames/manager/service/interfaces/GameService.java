@@ -1,23 +1,54 @@
 package com.tokyoolympicgames.manager.service.interfaces;
 
 import com.tokyoolympicgames.manager.entity.Game;
-import com.tokyoolympicgames.manager.entity.Localization;
-import com.tokyoolympicgames.manager.entity.Modality;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service for accessing the data base
+ *
+ * @author Wendler
+ */
 public interface GameService {
 
+    /**
+     * Save a Game
+     *
+     * @param game
+     * @return
+     */
     Optional<Game> save(Game game);
 
-    Optional<Game> findById(String gameId);
+    /**
+     * Find all Games in some specified location
+     *
+     * @param local
+     * @return
+     */
+    List<Game> findByLocal(String local);
 
-    List<Game> findByLocal(Localization local);
+    /**
+     * Find all games in some location from some modality
+     *
+     * @param modality
+     * @param local
+     * @return
+     */
+    List<Game> findByModalityAndLocal(String modality, String local);
 
-    List<Game> findByModalityAndLocal(Modality modality, Localization local);
+    /**
+     * Find all games from some modality ordered by first to the last based on start time
+     *
+     * @param modality
+     * @return
+     */
+    List<Game> findByModalityOrderByBeginTime(String modality);
 
-    List<Game> findByModalityOrderByBeginTime(Modality modality);
-
+    /**
+     * Find all games ordered by the first to the last based on start time
+     *
+     * @return
+     */
     List<Game> findAllByOrderByBeginTime();
 }

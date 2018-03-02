@@ -5,17 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tokyoolympicgames.manager.enums.Stage;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.hibernate.annotations.Cascade;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -36,24 +27,20 @@ public class Game implements Serializable {
     private Long id;
     @Column(name = "BEGIN_TIME")
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime beginTime;
     @Column(name = "END_TIME")
     @NotNull
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'")
     private LocalDateTime endTime;
-    @ManyToOne(cascade = CascadeType.ALL)
     @NotNull
-    private Modality modality;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private String modality;
     @NotNull
-    private Country firstCountry;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private String firstCountry;
     @NotNull
-    private Country secondCountry;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private String secondCountry;
     @NotNull
-    private Localization local;
+    private String local;
     @Enumerated(EnumType.STRING)
     @NotNull
     @Column(name = "STAGE")
@@ -63,8 +50,7 @@ public class Game implements Serializable {
 
     }
 
-    public Game(LocalDateTime beginTime, LocalDateTime endTime, Modality modality, Country firstCountry,
-                Country secondCountry, Localization local, Stage stage) {
+    public Game(LocalDateTime beginTime, LocalDateTime endTime, String modality, String firstCountry, String secondCountry, String local, Stage stage) {
 
         this.beginTime = beginTime;
         this.endTime = endTime;
@@ -73,6 +59,22 @@ public class Game implements Serializable {
         this.secondCountry = secondCountry;
         this.local = local;
         this.stage = stage;
+    }
+
+    public String getFirstCountry() {
+        return firstCountry;
+    }
+
+    public void setFirstCountry(String firstCountry) {
+        this.firstCountry = firstCountry;
+    }
+
+    public String getSecondCountry() {
+        return secondCountry;
+    }
+
+    public void setSecondCountry(String secondCountry) {
+        this.secondCountry = secondCountry;
     }
 
     public Long getId() {
@@ -85,34 +87,15 @@ public class Game implements Serializable {
         this.id = id;
     }
 
-    public Country getFirstCountry() {
 
-        return firstCountry;
-    }
-
-    public void setFirstCountry(Country firstCountry) {
-
-        this.firstCountry = firstCountry;
-    }
-
-    public Country getSecondCountry() {
-
-        return secondCountry;
-    }
-
-    public void setSecondCountry(Country secondCountry) {
-
-        this.secondCountry = secondCountry;
-    }
-
-    public Modality getModality() {
+    public String getModality() {
 
         return modality;
     }
 
-    public void setModality(Modality modality) {
+    public void setModality(String String) {
 
-        this.modality = modality;
+        this.modality = String;
     }
 
     public LocalDateTime getBeginTime() {
@@ -135,12 +118,12 @@ public class Game implements Serializable {
         this.endTime = endTime;
     }
 
-    public Localization getLocal() {
+    public String getLocal() {
 
         return local;
     }
 
-    public void setLocal(Localization local) {
+    public void setLocal(String local) {
 
         this.local = local;
     }
@@ -169,33 +152,33 @@ public class Game implements Serializable {
         Game game = (Game) o;
 
         return new EqualsBuilder().append(getBeginTime(), game.getBeginTime())
-                                  .append(getEndTime(), game.getEndTime())
-                                  .append(getModality(), game.getModality())
-                                  .append(getFirstCountry(), game.getFirstCountry())
-                                  .append(getSecondCountry(), game.getSecondCountry())
-                                  .append(getLocal(), game.getLocal())
-                                  .append(getStage(), game.getStage())
-                                  .isEquals();
+                .append(getEndTime(), game.getEndTime())
+                .append(getModality(), game.getModality())
+                .append(getFirstCountry(), game.getFirstCountry())
+                .append(getSecondCountry(), game.getSecondCountry())
+                .append(getLocal(), game.getLocal())
+                .append(getStage(), game.getStage())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
 
         return new HashCodeBuilder(17, 37).append(getBeginTime())
-                                          .append(getEndTime())
-                                          .append(getModality())
-                                          .append(getFirstCountry())
-                                          .append(getSecondCountry())
-                                          .append(getLocal())
-                                          .append(getStage())
-                                          .toHashCode();
+                .append(getEndTime())
+                .append(getModality())
+                .append(getFirstCountry())
+                .append(getSecondCountry())
+                .append(getLocal())
+                .append(getStage())
+                .toHashCode();
     }
 
     @Override
     public String toString() {
 
         return "The " + modality + " " + stage + " game between " + firstCountry + " and " + secondCountry
-            + ", will take place at " + local + " and begin at " + beginTime + " until " + endTime;
+                + ", will take place at " + local + " and begin at " + beginTime + " until " + endTime;
     }
 
 }

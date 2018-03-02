@@ -3,7 +3,7 @@ package com.tokyoolympicgames.manager.exception;
 public class GameLocalModalityTimeException extends RuntimeException {
 
     /**
-     * This class is an runtime exception responsible for the validation game begin and end date and duration
+     * This class is an runtime exception responsible for the validation of how many time the game will happen in some local
      */
     private static final long serialVersionUID = 2685347634907353702L;
 

@@ -25,13 +25,13 @@ public class GameLocalModalityTimeValidatorImpl implements GameValidator {
         List<Game> gameByModalityAndLocal = gameService.findByModalityAndLocal(game.getModality(), game.getLocal());
 
         List<Game> gamesInTheSameTime = gameByModalityAndLocal.stream()
-                                                              .filter(gameByLocalAndModality ->
-                                                                  gameByLocalAndModality.getBeginTime()
-                                                                                        .isAfter(game.getBeginTime())
-                                                                      && gameByLocalAndModality.getEndTime()
-                                                                                               .isBefore(
-                                                                                                   game.getEndTime()))
-                                                              .collect(Collectors.toList());
+                .filter(gameByLocalAndModality ->
+                        (gameByLocalAndModality.getBeginTime()
+                                .isAfter(game.getBeginTime())
+                                && gameByLocalAndModality.getEndTime()
+                                .isBefore(
+                                        game.getEndTime()) || gameByLocalAndModality.getBeginTime().equals(game.getBeginTime())))
+                .collect(Collectors.toList());
 
         if (!gamesInTheSameTime.isEmpty())
             throw new GameLocalModalityTimeException("There is a game of the this modality happening in the same time and Local");

@@ -1,5 +1,10 @@
 package com.tokyoolympicgames.manager.enums;
 
+/**
+ * Enum with the game stage.
+ *
+ * @author Wendler
+ */
 public enum Stage {
     FINAL("F"),
     EIGHTFINAL("EF"),

@@ -11,8 +11,8 @@ public class GameDurationValidatorImpl implements GameValidator {
     @Override
     public void validate(Game game) {
 
-        if (Duration.between(game.getBeginTime(), game.getEndTime())
-                    .toMinutes() < 30) {
+        if (Math.abs(Duration.between(game.getBeginTime(), game.getEndTime())
+                .toMinutes()) < 30) {
             throw new GameTimeException("The duration of the match is below 30 minutes");
         }
     }

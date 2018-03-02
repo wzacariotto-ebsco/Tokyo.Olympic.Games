@@ -30,7 +30,7 @@ public class GameSameLocalValidatorImpl implements GameValidator {
                                                          == (gameByLocal.getBeginTime()
                                                                         .getDayOfYear()))
                                                      .collect(Collectors.toList());
-        if (gamesInTheSameLocal.size() > 4) {
+        if (gamesInTheSameLocal.size() >= 4) {
             throw new GameLocalException("There are 4 games in this local in the same day");
         }
 
