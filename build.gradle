@@ -90,7 +90,13 @@ dependencies {
     compile(group: 'com.google.code.gson', name: 'gson', version: '2.7')
 
     // Data Base
-    runtime('org.hsqldb:hsqldb')
+    //runtime('org.hsqldb:hsqldb')
+    runtime "com.h2database:h2"
+
+    // Jackson
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.8.8"
+
+
 }
 
 dependencyManagement {
