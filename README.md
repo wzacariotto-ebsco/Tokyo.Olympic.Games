@@ -59,8 +59,8 @@ In the body of this requisition it is required a Game as Json.
 ## Test
 ### Unit
 Unit tests are available under src/test/java. It can be run using
-
-    ```gradle test```
+	
+	gradle test
 
 ## Entity information
 The main entity is called game that defines the competition between 2 countries. The schema is available below:
