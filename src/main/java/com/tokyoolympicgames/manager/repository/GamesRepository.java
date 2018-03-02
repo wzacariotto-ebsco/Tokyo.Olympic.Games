@@ -1,4 +1,4 @@
-package com.tokyoolympicgames.manager.repository.interfaces;
+package com.tokyoolympicgames.manager.repository;
 
 import com.tokyoolympicgames.manager.entity.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +11,7 @@ public interface GamesRepository extends JpaRepository<Game, Long> {
 
     List<Game> findByModalityAndLocal(String modality, String local);
 
-    List<Game> findByModalityOrderByBeginTime(String modality);
+    List<Game> findByModalityOrderByBeginTimeAsc(String modality);
 
-    List<Game> findAllByOrderByBeginTime();
+    List<Game> findAllByOrderByBeginTimeAsc();
 }

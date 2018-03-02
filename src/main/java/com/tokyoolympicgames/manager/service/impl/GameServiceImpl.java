@@ -1,16 +1,15 @@
-package com.tokyoolympicgames.manager.service;
+package com.tokyoolympicgames.manager.service.impl;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.tokyoolympicgames.manager.entity.Game;
-import com.tokyoolympicgames.manager.repository.interfaces.GamesRepository;
-import com.tokyoolympicgames.manager.service.interfaces.GameService;
+import com.tokyoolympicgames.manager.repository.GamesRepository;
+import com.tokyoolympicgames.manager.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Service Implementation for using JPA repository
@@ -30,9 +29,9 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public Optional<Game> save(Game game) {
+    public Game save(Game game) {
 
-        return Optional.ofNullable(this.gamesRepository.save(game));
+        return this.gamesRepository.save(game);
     }
 
     @Override
@@ -53,25 +52,28 @@ public class GameServiceImpl implements GameService {
     @HystrixCommand(fallbackMethod = "emptyGameList")
     public List<Game> findByModalityOrderByBeginTime(String modality) {
 
-        return this.gamesRepository.findByModalityOrderByBeginTime(modality);
+        return this.gamesRepository.findByModalityOrderByBeginTimeAsc(modality);
     }
 
     @Override
     @HystrixCommand(fallbackMethod = "emptyGameList")
     public List<Game> findAllByOrderByBeginTime() {
 
-        return this.gamesRepository.findAllByOrderByBeginTime();
+        return this.gamesRepository.findAllByOrderByBeginTimeAsc();
     }
 
     public List<Game> emptyGameList() {
+
         return new ArrayList<>();
     }
 
     public List<Game> emptyGameList(String modality) {
+
         return new ArrayList<>();
     }
 
     public List<Game> emptyGameList(String modality, String local) {
+
         return new ArrayList<>();
     }
 

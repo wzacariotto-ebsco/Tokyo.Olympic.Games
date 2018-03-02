@@ -1,4 +1,4 @@
-package com.tokyoolympicgames.manager.validator.interfaces;
+package com.tokyoolympicgames.manager.validator;
 
 import com.tokyoolympicgames.manager.entity.Game;
 
@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 public class GameChainValidator {
 
-    LinkedList<GameValidator> chain;
+    private LinkedList<GameValidator> chain;
 
     public GameChainValidator() {
 

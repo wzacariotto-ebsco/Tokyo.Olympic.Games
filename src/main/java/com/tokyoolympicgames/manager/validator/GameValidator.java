@@ -1,4 +1,4 @@
-package com.tokyoolympicgames.manager.validator.interfaces;
+package com.tokyoolympicgames.manager.validator;
 
 import com.tokyoolympicgames.manager.entity.Game;
 

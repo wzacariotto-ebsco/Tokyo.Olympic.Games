@@ -15,7 +15,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import static springfox.documentation.builders.PathSelectors.regex;
 
-
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -44,14 +43,19 @@ public class SwaggerConfig {
     @Bean
     public Docket apiDocs() {
 
-        return new Docket(DocumentationType.SWAGGER_2).groupName(applicationId).apiInfo(apiInfo())
-                .useDefaultResponseMessages(true).alternateTypeRules(geAlternateTypeRules()).select().paths(paths())
-                .build().ignoredParameterTypes(ApiIgnore.class);
+        return new Docket(DocumentationType.SWAGGER_2).groupName(applicationId)
+                                                      .apiInfo(apiInfo())
+                                                      .useDefaultResponseMessages(true)
+                                                      .alternateTypeRules(geAlternateTypeRules())
+                                                      .select()
+                                                      .paths(paths())
+                                                      .build()
+                                                      .ignoredParameterTypes(ApiIgnore.class);
     }
 
     private AlternateTypeRule[] geAlternateTypeRules() {
 
-        return new AlternateTypeRule[]{};
+        return new AlternateTypeRule[] {};
     }
 
     private Predicate<String> paths() {
@@ -61,7 +65,10 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
 
-        return new ApiInfoBuilder().title(title).description(description)
-                .contact(new Contact(contactName, contactURL, contactEmail)).version(version).build();
+        return new ApiInfoBuilder().title(title)
+                                   .description(description)
+                                   .contact(new Contact(contactName, contactURL, contactEmail))
+                                   .version(version)
+                                   .build();
     }
 }

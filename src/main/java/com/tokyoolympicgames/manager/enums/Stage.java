@@ -1,24 +1,22 @@
 package com.tokyoolympicgames.manager.enums;
 
 /**
- * Enum with the game stage.
+ * Enum with the game gameStage.
  *
  * @author Wendler
  */
 public enum Stage {
-    FINAL("F"),
-    EIGHTFINAL("EF"),
-    QUARTERFINAL("QF"),
-    SEMIFINAL("SF"),
-    ELIMINATORY("E");
+    FINAL("F"), EIGHTFINAL("EF"), QUARTERFINAL("QF"), SEMIFINAL("SF"), ELIMINATION("E");
 
-    private String stage;
+    private String gameStage;
 
-    Stage(String stage) {
-        this.stage = stage;
+    Stage(String gameStage) {
+
+        this.gameStage = gameStage;
     }
 
     public String getStage() {
-        return stage;
+
+        return gameStage;
     }
 }

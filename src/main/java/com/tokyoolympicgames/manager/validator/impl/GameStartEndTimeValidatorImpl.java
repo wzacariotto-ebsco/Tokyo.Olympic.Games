@@ -1,8 +1,8 @@
-package com.tokyoolympicgames.manager.validator;
+package com.tokyoolympicgames.manager.validator.impl;
 
 import com.tokyoolympicgames.manager.entity.Game;
 import com.tokyoolympicgames.manager.exception.GameTimeException;
-import com.tokyoolympicgames.manager.validator.interfaces.GameValidator;
+import com.tokyoolympicgames.manager.validator.GameValidator;
 
 public class GameStartEndTimeValidatorImpl implements GameValidator {
 
