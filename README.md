@@ -53,6 +53,7 @@ The application will validate:
 The method is available in the URL below, and it is responsible for retrieving competitions based in a non required modality filter.
 
 With filer: ```GET http://localhost:8090/games?modality=sport```
+
 Without filer: ```GET http://localhost:8090/games```
 
 In the body of this requisition it is required a Game as Json.
