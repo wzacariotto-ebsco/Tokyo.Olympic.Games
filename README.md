@@ -84,4 +84,5 @@ The Stage contains the specified values
 * ELIMINATION
 
 The Date Time follow the pattern
+
 	```yyyy-MM-dd'T'HH:mm:ss.SSS'Z'```
