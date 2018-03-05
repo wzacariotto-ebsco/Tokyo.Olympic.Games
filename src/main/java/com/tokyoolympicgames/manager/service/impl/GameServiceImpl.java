@@ -99,11 +99,6 @@ public class GameServiceImpl implements GameService {
         return new ArrayList<>();
     }
     
-    public List<Game> emptyGameList(String local) {
-
-        return new ArrayList<>();
-    }
-
     public List<Game> emptyGameList(Modality modality, Localization local) {
 
         return new ArrayList<>();
