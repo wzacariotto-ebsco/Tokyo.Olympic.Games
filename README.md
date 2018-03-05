@@ -32,7 +32,14 @@ The 'Tokyo.Olympic.Games' is a 'Spring-Boot / Spring-Cloud / Spring-Netflix' - M
 
 ## Database
 The data is a Create type, so every time the Application run it resets the persisted Data. It is a in memory database. 
-For more information see [H2-Website](http://www.h2database.com/html/main.html, "H2")
+For more information see [H2-Website](http://www.h2database.com/html/main.html, "H2").
+The Database can be accessed at the URL:
+
+```http://localhost:8090/console```
+
+Using the JDBC URL:
+
+```jdbc:h2:mem:olympic-app```
 
 ## Rest
 The application has two endpoints one for persisting Games and the second for retrieving the games.
