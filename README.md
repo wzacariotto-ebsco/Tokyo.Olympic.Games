@@ -68,13 +68,21 @@ Unit tests are available under src/test/java. It can be run using
 The main entity is called game that defines the competition between 2 countries. The schema is available below:
 ```
 {
-   "beginTime": "2018-03-02T12:28:09.081Z",
-   "endTime": "2018-03-02T12:28:09.081Z",
-   "firstCountry": "Brazil",
-   "local": "Tokyo",
-   "modality": "Soccer",
-   "secondCountry": "Germany",
-   "stage": "FINAL"
+  "beginTime": "2018-03-05T01:24:23.104Z",
+  "endTime": "2018-03-05T01:24:23.104Z",
+  "firstCountry": {
+    "name": "Brazil"
+  },
+  "local": {
+    "name": "Tokyo"
+  },
+  "modality": {
+    "name": "Soccer"
+  },
+  "secondCountry": {
+    "name": "Germany"
+  },
+  "stage": "FINAL"
 }
 ```
 
