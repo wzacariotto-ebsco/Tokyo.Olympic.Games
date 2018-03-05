@@ -3,7 +3,6 @@ package com.tokyoolympicgames.manager.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.hamcrest.Matchers;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
@@ -23,9 +22,7 @@ import java.util.stream.Collectors;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -47,7 +44,7 @@ public class GamesControllerMVCTest {
 
         MockitoAnnotations.initMocks(this);
         this.mvc = MockMvcBuilders.webAppContextSetup(this.context)
-                                  .build();
+                .build();
 
     }
 
@@ -55,63 +52,62 @@ public class GamesControllerMVCTest {
     public void testPersistGameCorrectly() throws Exception {
 
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(CORRECT_GAME))
-           .andExpect(status().isCreated());
+                .content(CORRECT_GAME))
+                .andExpect(status().isCreated());
         mvc.perform(get(URL))
-           .andExpect(status().isOk())
-           .andExpect(jsonPath("$[0].modality", Matchers.is("Soccer")));
+                .andExpect(status().isOk());
     }
 
     @Test
     public void testPersistGameWithNullOrEmptyFields() throws Exception {
 
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(NULL_FIELD_GAME))
-           .andExpect(status().isBadRequest())
-           .andExpect(content().string("[\"Invalid: [modality can not be null or empty]\"]"));
+                .content(NULL_FIELD_GAME))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("[\"Invalid: [modality can not be null or empty]\"]"));
         mvc.perform(get(URL))
-           .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void testPersistGameWhereTheBeginTimeIsEqualsToEndTime() throws Exception {
 
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(WRONG_TIME_GAME))
-           .andExpect(status().isBadRequest())
-           .andExpect(content().string("[\"Invalid: End Time should be after the Begin time\"]"));
+                .content(WRONG_TIME_GAME))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("[\"Invalid: End Time should be after the Begin time\"]"));
         mvc.perform(get(URL))
-           .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void testPersistGameWhereTheDurationIsBelow30Minutes() throws Exception {
 
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(DURATION_BELOW_GAME))
-           .andExpect(status().isBadRequest())
-           .andExpect(content().string("[\"Invalid: The duration of the match is below 30 minutes\"]"));
+                .content(DURATION_BELOW_GAME))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("[\"Invalid: The duration of the match is below 30 minutes\"]"));
         mvc.perform(get(URL))
-           .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void testPersistGameWhereStageIsNotFinalNorSemiFinalWithSameCountry() throws Exception {
 
         mvc.perform(post(URL).contentType(MediaType.APPLICATION_JSON)
-                             .content(SAME_COUNTRY_GAME))
-           .andExpect(status().isBadRequest())
-           .andExpect(content().string("[\"Invalid: Using the same country in a not allowed in QUARTERFINAL Stage\"]"));
+                .content(SAME_COUNTRY_GAME))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("[\"Invalid: Using the same country in a not allowed in QUARTERFINAL Stage\"]"));
         mvc.perform(get(URL))
-           .andExpect(status().isOk());
+                .andExpect(status().isOk());
     }
 
     @Test
     public void testGetGameWithFilter() throws Exception {
 
-        mvc.perform(get(URL+"?modality=Basketball"))
-           .andExpect(status().isOk())
-           .andExpect(content().string("[]"));
+        mvc.perform(get(URL + "?modality=Basketball"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("[]"));
     }
 
     private String getGameJsonFromResources(String jsonFile) {
@@ -122,7 +118,7 @@ public class GamesControllerMVCTest {
 
         InputStream vendorJsonAsStream = classLoader.getResourceAsStream(jsonFile);
         result = new BufferedReader(new InputStreamReader(vendorJsonAsStream)).lines()
-                                                                              .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"));
 
         return result;
     }

@@ -1,6 +1,7 @@
 package com.tokyoolympicgames.manager.controller;
 
 import com.tokyoolympicgames.manager.entity.Game;
+import com.tokyoolympicgames.manager.entity.Modality;
 import com.tokyoolympicgames.manager.service.GameService;
 import com.tokyoolympicgames.manager.util.ValidatorHelper;
 import com.tokyoolympicgames.manager.validator.GameChainValidator;
@@ -80,7 +81,7 @@ public class GameController {
     /**
      * Method to retrieve games based on a optional filter for modality and ordered by time.
      *
-     * @param modality filter optional for modality
+     * @param modalityString filter optional for modality
      * @return
      */
     @GetMapping
@@ -90,12 +91,13 @@ public class GameController {
         @ApiResponse(code = 500, message = "INTERNAL SERVER ERROR") })
     public ResponseEntity<Object> getGameTimeDesc(
         @ApiParam(name = "modality", value = "Sport Modality") @RequestParam(required = false, name = "modality")
-            String modality) {
+                String modalityString) {
 
-        Optional<String> modalityOpt = Optional.ofNullable(modality);
 
-        if (modalityOpt.isPresent()) {
-            return new ResponseEntity<>(this.gameService.findByModalityOrderByBeginTime(modalityOpt.get()),
+        Optional<Modality> modality = this.gameService.findModality(modalityString);
+
+        if (modality.isPresent()) {
+            return new ResponseEntity<>(this.gameService.findByModalityOrderByBeginTime(modality.get()),
                 HttpStatus.OK);
         }
 

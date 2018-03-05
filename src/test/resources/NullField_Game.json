@@ -1,8 +1,14 @@
 {
   "beginTime": "2018-03-02T17:01:20.340Z",
   "endTime": "2018-03-02T19:04:20.341Z",
-  "firstCountry": "Brazil",
-  "local": "Tokyo",
-  "secondCountry": "Germany",
+  "firstCountry": {
+    "name": "Brazil"
+  },
+  "local": {
+    "name": "Tokyo"
+  },
+  "secondCountry": {
+    "name": "Germany"
+  },
   "stage": "FINAL"
 }
