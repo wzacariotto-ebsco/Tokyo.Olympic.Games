@@ -71,6 +71,11 @@ public class GameServiceImpl implements GameService {
 
         return new ArrayList<>();
     }
+    
+    public List<Game> emptyGameList(String local) {
+
+        return new ArrayList<>();
+    }
 
     public List<Game> emptyGameList(String modality, String local) {
 
